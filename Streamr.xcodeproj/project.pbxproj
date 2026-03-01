@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		036A1CF504AFA71ABD3EC63F /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD4B753D48CE6C44C564AB /* BrowserView.swift */; };
+		49C91C570E325EAA94876196 /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C513D9F617CD502E71A6F /* QueueView.swift */; };
+		82354D68C1A0139D1E69D52E /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BB47B8DA26DE24D938855C /* PlayerViewModel.swift */; };
+		8C76DE68F327AB7E65DAD4AA /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E37B0CA3C814D6C69660498 /* DownloadManager.swift */; };
+		A5BD5DEFBCA1A737AC0C6416 /* PlayerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB4D202B8D1F25FEBB8E959 /* PlayerViews.swift */; };
+		B4E2D3F5A6C78901BCDE2345 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F1C2D4E5B67890ABCD1234 /* Playlist.swift */; };
+		B537CCE8B7D45854772E4D27 /* StreamrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1873BF8493159CB902DCE347 /* StreamrApp.swift */; };
+		D6E4F5B7C8E90123DEF04567 /* PlaylistListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F3E4A6B7D89012CDEF3456 /* PlaylistListView.swift */; };
+		F8337CF4A137CE69B4DAC352 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3782867C51A6B9BB26272DC6 /* ContentView.swift */; };
+		FAA0F5AC44F493097F0718AE /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7715C0B140E5FC42E58042C1 /* Episode.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0E37B0CA3C814D6C69660498 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		1873BF8493159CB902DCE347 /* StreamrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamrApp.swift; sourceTree = "<group>"; };
+		2678F494CC29BA8E2F0C4643 /* Streamr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3782867C51A6B9BB26272DC6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		62BB47B8DA26DE24D938855C /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		7715C0B140E5FC42E58042C1 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		7C1C513D9F617CD502E71A6F /* QueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueView.swift; sourceTree = "<group>"; };
+		A3F1C2D4E5B67890ABCD1234 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		C5F3E4A6B7D89012CDEF3456 /* PlaylistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListView.swift; sourceTree = "<group>"; };
+		DCCD4B753D48CE6C44C564AB /* BrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
+		EEB4D202B8D1F25FEBB8E959 /* PlayerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViews.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9E872B0C4F3AB11D258C39F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A85897F1A32FE9B91C081CD = {
+			isa = PBXGroup;
+			children = (
+				E9AC4BD1540DF25F92F842D2 /* Streamr */,
+				B88D7E26791946AEFDCC8BB7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		803A864E0445A2F0C4BCA33B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0E37B0CA3C814D6C69660498 /* DownloadManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		88E68C707EC7772BE45CD9E7 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				62BB47B8DA26DE24D938855C /* PlayerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A4C2A37E76047A91E5C0296C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7715C0B140E5FC42E58042C1 /* Episode.swift */,
+				A3F1C2D4E5B67890ABCD1234 /* Playlist.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B88D7E26791946AEFDCC8BB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2678F494CC29BA8E2F0C4643 /* Streamr.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C376D4D9BF34E56D9B2FBC3F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3782867C51A6B9BB26272DC6 /* ContentView.swift */,
+				C5F3E4A6B7D89012CDEF3456 /* PlaylistListView.swift */,
+				7C1C513D9F617CD502E71A6F /* QueueView.swift */,
+				DCCD4B753D48CE6C44C564AB /* BrowserView.swift */,
+				EEB4D202B8D1F25FEBB8E959 /* PlayerViews.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E9AC4BD1540DF25F92F842D2 /* Streamr */ = {
+			isa = PBXGroup;
+			children = (
+				1873BF8493159CB902DCE347 /* StreamrApp.swift */,
+				A4C2A37E76047A91E5C0296C /* Models */,
+				C376D4D9BF34E56D9B2FBC3F /* Views */,
+				88E68C707EC7772BE45CD9E7 /* ViewModels */,
+				803A864E0445A2F0C4BCA33B /* Services */,
+			);
+			path = Streamr;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A1D1B958922F39EFB59FFBA /* Streamr */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0940312D5B1CC5AC53510955 /* Build configuration list for PBXNativeTarget "Streamr" */;
+			buildPhases = (
+				7EE609159AC086BAB15FF998 /* Sources */,
+				A9E872B0C4F3AB11D258C39F /* Frameworks */,
+				A2892AFC2D88060C0AA91373 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Streamr;
+			productName = Streamr;
+			productReference = 2678F494CC29BA8E2F0C4643 /* Streamr.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1781F676DEDF5767F3243DB0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					0A1D1B958922F39EFB59FFBA = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = ED1E725F939981FEAA4F7D8B /* Build configuration list for PBXProject "Streamr" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0A85897F1A32FE9B91C081CD;
+			productRefGroup = B88D7E26791946AEFDCC8BB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A1D1B958922F39EFB59FFBA /* Streamr */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2892AFC2D88060C0AA91373 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7EE609159AC086BAB15FF998 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B537CCE8B7D45854772E4D27 /* StreamrApp.swift in Sources */,
+				FAA0F5AC44F493097F0718AE /* Episode.swift in Sources */,
+				B4E2D3F5A6C78901BCDE2345 /* Playlist.swift in Sources */,
+				F8337CF4A137CE69B4DAC352 /* ContentView.swift in Sources */,
+				D6E4F5B7C8E90123DEF04567 /* PlaylistListView.swift in Sources */,
+				49C91C570E325EAA94876196 /* QueueView.swift in Sources */,
+				036A1CF504AFA71ABD3EC63F /* BrowserView.swift in Sources */,
+				A5BD5DEFBCA1A737AC0C6416 /* PlayerViews.swift in Sources */,
+				82354D68C1A0139D1E69D52E /* PlayerViewModel.swift in Sources */,
+				8C76DE68F327AB7E65DAD4AA /* DownloadManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		097E7CFCCC5B6D6521DA7806 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = Y94XLJJ3HB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Used for audio playback";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.streamr.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C6A40B9D7D7215041AA086B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = Y94XLJJ3HB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Used for audio playback";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.streamr.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6E276BAF90A27F40855C1431 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DE205C772D072C16E46C0330 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0940312D5B1CC5AC53510955 /* Build configuration list for PBXNativeTarget "Streamr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				097E7CFCCC5B6D6521DA7806 /* Debug */,
+				5C6A40B9D7D7215041AA086B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ED1E725F939981FEAA4F7D8B /* Build configuration list for PBXProject "Streamr" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E276BAF90A27F40855C1431 /* Debug */,
+				DE205C772D072C16E46C0330 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1781F676DEDF5767F3243DB0 /* Project object */;
+}
