@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1B2C3D4E5F6A7B8C9D0E1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2C3D4E5F6A7B8C9D0E1F2A /* Assets.xcassets */; };
 		036A1CF504AFA71ABD3EC63F /* BrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCD4B753D48CE6C44C564AB /* BrowserView.swift */; };
 		49C91C570E325EAA94876196 /* QueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1C513D9F617CD502E71A6F /* QueueView.swift */; };
 		82354D68C1A0139D1E69D52E /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BB47B8DA26DE24D938855C /* PlayerViewModel.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB2C3D4E5F6A7B8C9D0E1F2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E37B0CA3C814D6C69660498 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		1873BF8493159CB902DCE347 /* StreamrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamrApp.swift; sourceTree = "<group>"; };
 		2678F494CC29BA8E2F0C4643 /* Streamr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -31,6 +33,7 @@
 		C5F3E4A6B7D89012CDEF3456 /* PlaylistListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistListView.swift; sourceTree = "<group>"; };
 		DCCD4B753D48CE6C44C564AB /* BrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserView.swift; sourceTree = "<group>"; };
 		EEB4D202B8D1F25FEBB8E959 /* PlayerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViews.swift; sourceTree = "<group>"; };
+		FF1A2B3C4D5E6F7A8B9C0D1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				1873BF8493159CB902DCE347 /* StreamrApp.swift */,
+				FF1A2B3C4D5E6F7A8B9C0D1E /* Info.plist */,
+				BB2C3D4E5F6A7B8C9D0E1F2A /* Assets.xcassets */,
 				A4C2A37E76047A91E5C0296C /* Models */,
 				C376D4D9BF34E56D9B2FBC3F /* Views */,
 				88E68C707EC7772BE45CD9E7 /* ViewModels */,
@@ -167,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1B2C3D4E5F6A7B8C9D0E1F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +210,7 @@
 				DEVELOPMENT_TEAM = Y94XLJJ3HB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Streamr/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Used for audio playback";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -236,6 +243,7 @@
 				DEVELOPMENT_TEAM = Y94XLJJ3HB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Streamr/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Used for audio playback";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
