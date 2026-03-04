@@ -9,6 +9,9 @@ struct MiniPlayerBar: View {
 
     var body: some View {
         HStack(spacing: 12) {
+            // Artwork thumbnail
+            artworkThumbnail
+
             // Episode info
             VStack(alignment: .leading, spacing: 2) {
                 Text(episode.title)
@@ -62,6 +65,37 @@ struct MiniPlayerBar: View {
             FullPlayerView(episode: episode)
         }
     }
+
+    @ViewBuilder
+    private var artworkThumbnail: some View {
+        if let urlString = episode.pageIconURL, let url = URL(string: urlString) {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                default:
+                    placeholderThumbnail
+                }
+            }
+        } else {
+            placeholderThumbnail
+        }
+    }
+
+    private var placeholderThumbnail: some View {
+        RoundedRectangle(cornerRadius: 6)
+            .fill(Color.accentColor.opacity(0.2))
+            .frame(width: 40, height: 40)
+            .overlay {
+                Image(systemName: "waveform")
+                    .font(.system(size: 16))
+                    .foregroundStyle(Color.accentColor)
+            }
+    }
 }
 
 // MARK: - Full Player View
@@ -74,19 +108,9 @@ struct FullPlayerView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
-                // Artwork placeholder
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(LinearGradient(
-                        colors: [Color.accentColor.opacity(0.6), Color.accentColor.opacity(0.2)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ))
+                // Artwork
+                artwork
                     .frame(width: 240, height: 240)
-                    .overlay {
-                        Image(systemName: "waveform")
-                            .font(.system(size: 64))
-                            .foregroundStyle(.white.opacity(0.8))
-                    }
                     .shadow(radius: 12)
 
                 // Title + source
@@ -125,6 +149,43 @@ struct FullPlayerView: View {
                 }
             }
         }
+    }
+
+    // MARK: Scrubber
+
+    // MARK: Artwork
+
+    @ViewBuilder
+    private var artwork: some View {
+        if let urlString = episode.pageIconURL, let url = URL(string: urlString) {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
+                default:
+                    artworkPlaceholder
+                }
+            }
+        } else {
+            artworkPlaceholder
+        }
+    }
+
+    private var artworkPlaceholder: some View {
+        RoundedRectangle(cornerRadius: 16)
+            .fill(LinearGradient(
+                colors: [Color.accentColor.opacity(0.6), Color.accentColor.opacity(0.2)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            ))
+            .overlay {
+                Image(systemName: "waveform")
+                    .font(.system(size: 64))
+                    .foregroundStyle(.white.opacity(0.8))
+            }
     }
 
     // MARK: Scrubber

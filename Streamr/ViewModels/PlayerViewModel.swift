@@ -193,6 +193,25 @@ final class PlayerViewModel: ObservableObject {
         currentEpisode?.playbackPosition = 0
         try? modelContext?.save()
         updateNowPlayingPlaybackState()
+        advanceToNextEpisode()
+    }
+
+    private func advanceToNextEpisode() {
+        guard
+            let finished = currentEpisode,
+            let playlist = finished.playlist,
+            let ctx = modelContext
+        else { return }
+
+        // Re-fetch all episodes in the playlist so we have a fresh, fully-sorted list.
+        let playlistID = playlist.id
+        let all = (try? ctx.fetch(FetchDescriptor<Episode>())) ?? []
+        let queue = all
+            .filter { $0.playlist?.id == playlistID && !$0.isFinished }
+            .sorted { $0.queuePosition < $1.queuePosition }
+
+        guard let next = queue.first else { return }
+        play(episode: next)
     }
 
     private func persistCurrentPosition() {
@@ -245,10 +264,32 @@ final class PlayerViewModel: ObservableObject {
     private func updateNowPlaying(episode: Episode) {
         var info = [String: Any]()
         info[MPMediaItemPropertyTitle] = episode.title
+        if let playlistName = episode.playlist?.name {
+            info[MPMediaItemPropertyAlbumTitle] = playlistName
+        }
         info[MPMediaItemPropertyMediaType] = MPMediaType.podcast.rawValue
         info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = episode.playbackPosition
         info[MPMediaItemPropertyPlaybackDuration] = episode.duration > 0 ? episode.duration : nil
         info[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = info
+
+        // Fetch artwork asynchronously and update Now Playing once it arrives.
+        if let urlString = episode.pageIconURL, let url = URL(string: urlString) {
+            Task {
+                await fetchAndSetArtwork(from: url)
+            }
+        }
+    }
+
+    /// Downloads the image at `url` and injects it as `MPMediaItemPropertyArtwork`.
+    private func fetchAndSetArtwork(from url: URL) async {
+        guard let (data, _) = try? await URLSession.shared.data(from: url),
+              let image = UIImage(data: data)
+        else { return }
+
+        let artwork = MPMediaItemArtwork(boundsSize: image.size) { _ in image }
+        var info = MPNowPlayingInfoCenter.default().nowPlayingInfo ?? [:]
+        info[MPMediaItemPropertyArtwork] = artwork
         MPNowPlayingInfoCenter.default().nowPlayingInfo = info
     }
 

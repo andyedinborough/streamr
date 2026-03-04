@@ -119,6 +119,7 @@ struct BrowserView: View {
         let episode = Episode(
             title: candidate.pageTitle.isEmpty ? candidate.pageURL.host() ?? "Unknown" : candidate.pageTitle,
             sourcePageURL: candidate.pageURL.absoluteString,
+            pageIconURL: candidate.pageIconURL,
             mediaURL: candidate.mediaURL.absoluteString,
             queuePosition: nextPosition,
             playlist: playlist
@@ -363,24 +364,68 @@ struct WebViewRepresentable: UIViewRepresentable {
             completionHandler(nil)  // decline — we manage the download ourselves
 
             let ctx = popContext(for: download)
+            let wv = webView  // capture weak ref value before async hop
+
             Task { @MainActor [weak self] in
                 guard let self else { return }
+
+                let iconURL = await Self.extractPageIconURL(from: wv)
+
                 if let ctx {
                     print("[Browser] showing confirmation sheet for \(ctx.mediaURL)")
                     self.vm.pendingCandidate = MediaCandidate(
-                        mediaURL:  ctx.mediaURL,
-                        pageURL:   ctx.pageURL,
-                        pageTitle: ctx.title.isEmpty ? suggestedFilename : ctx.title
+                        mediaURL:    ctx.mediaURL,
+                        pageURL:     ctx.pageURL,
+                        pageTitle:   ctx.title.isEmpty ? suggestedFilename : ctx.title,
+                        pageIconURL: iconURL
                     )
                 } else if let url = response.url {
                     print("[Browser] WKDownload context missing — using response URL")
                     self.vm.pendingCandidate = MediaCandidate(
-                        mediaURL:  url,
-                        pageURL:   url,
-                        pageTitle: suggestedFilename
+                        mediaURL:    url,
+                        pageURL:     url,
+                        pageTitle:   suggestedFilename,
+                        pageIconURL: iconURL
                     )
                 }
             }
+        }
+
+        /// Runs JavaScript in the web view to find the best icon URL for the current page.
+        /// Priority: og:image > apple-touch-icon > shortcut icon > /favicon.ico
+        @MainActor
+        private static func extractPageIconURL(from webView: WKWebView?) async -> String? {
+            guard let webView else { return nil }
+            let js = """
+            (function() {
+                var og = document.querySelector('meta[property="og:image"]');
+                if (og && og.content) return og.content;
+                var touch = document.querySelector('link[rel~="apple-touch-icon"]');
+                if (touch && touch.href) return touch.href;
+                var icon = document.querySelector('link[rel~="icon"]');
+                if (icon && icon.href) return icon.href;
+                return null;
+            })()
+            """
+            let result = try? await webView.evaluateJavaScript(js)
+            if let str = result as? String, !str.isEmpty {
+                // Resolve relative URLs against the page origin.
+                if str.hasPrefix("http://") || str.hasPrefix("https://") {
+                    return str
+                }
+                if let base = webView.url {
+                    return URL(string: str, relativeTo: base)?.absoluteString
+                }
+            }
+            // Fall back to the standard favicon path.
+            if let origin = webView.url.flatMap({ URLComponents(url: $0, resolvingAgainstBaseURL: false) }) {
+                var comps = origin
+                comps.path = "/favicon.ico"
+                comps.query = nil
+                comps.fragment = nil
+                return comps.url?.absoluteString
+            }
+            return nil
         }
 
         func downloadDidFinish(_ download: WKDownload) {

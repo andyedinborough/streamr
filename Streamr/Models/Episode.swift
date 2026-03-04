@@ -10,6 +10,8 @@ final class Episode {
     var title: String
     /// The source URL string of the page the user was on when the download began.
     var sourcePageURL: String
+    /// The best icon/artwork URL found on the source page (og:image, apple-touch-icon, or favicon).
+    var pageIconURL: String?
     /// The direct URL of the media file.
     var mediaURL: String
     /// Local file path (relative to the app's Documents directory) after download completes.
@@ -45,6 +47,7 @@ final class Episode {
         id: UUID = .init(),
         title: String,
         sourcePageURL: String,
+        pageIconURL: String? = nil,
         mediaURL: String,
         localFilename: String? = nil,
         addedAt: Date = .now,
@@ -60,6 +63,7 @@ final class Episode {
         self.id = id
         self.title = title
         self.sourcePageURL = sourcePageURL
+        self.pageIconURL = pageIconURL
         self.mediaURL = mediaURL
         self.localFilename = localFilename
         self.addedAt = addedAt

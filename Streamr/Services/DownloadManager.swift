@@ -7,6 +7,8 @@ struct MediaCandidate: Equatable {
     let mediaURL: URL
     let pageURL: URL
     let pageTitle: String
+    /// Best icon/artwork URL found on the source page (og:image, apple-touch-icon, or favicon).
+    var pageIconURL: String? = nil
     /// Trimmed visible text of the source page, used to give the AI model context.
     /// Empty string when not available.
     var pageText: String = ""

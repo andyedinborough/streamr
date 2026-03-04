@@ -121,6 +121,7 @@ struct QueueView: View {
 
 struct EpisodeRow: View {
     let episode: Episode
+    @EnvironmentObject private var playerVM: PlayerViewModel
     @ObservedObject private var downloadMgr = DownloadManager.shared
 
     var body: some View {
@@ -150,6 +151,47 @@ struct EpisodeRow: View {
 
     @ViewBuilder
     private var statusIcon: some View {
+        if let iconURLString = episode.pageIconURL,
+           let iconURL = URL(string: iconURLString) {
+            // Artwork thumbnail with a small state badge overlaid bottom-right.
+            AsyncImage(url: iconURL) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 36, height: 36)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        .overlay(alignment: .bottomTrailing) {
+                            stateBadge
+                        }
+                        .opacity(episode.isFinished ? 0.5 : 1)
+                default:
+                    plainIcon
+                }
+            }
+        } else {
+            plainIcon
+        }
+    }
+
+    /// Small badge shown over the artwork thumbnail.
+    @ViewBuilder
+    private var stateBadge: some View {
+        ZStack {
+            Circle()
+                .fill(.regularMaterial)
+                .frame(width: 18, height: 18)
+            Image(systemName: iconName)
+                .foregroundStyle(iconForeground)
+                .font(.system(size: 9, weight: .bold))
+        }
+        .offset(x: 4, y: 4)
+    }
+
+    /// Fallback when no artwork URL is available.
+    @ViewBuilder
+    private var plainIcon: some View {
         ZStack {
             Circle()
                 .fill(iconBackground)
@@ -164,6 +206,9 @@ struct EpisodeRow: View {
         if !episode.isDownloaded {
             let p = downloadMgr.activeDownloads[episode.id]
             return p != nil ? "arrow.down" : "icloud.and.arrow.down"
+        }
+        if playerVM.currentEpisode?.id == episode.id && playerVM.isPlaying {
+            return "pause.fill"
         }
         return "play.fill"
     }
