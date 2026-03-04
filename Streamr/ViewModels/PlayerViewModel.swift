@@ -262,9 +262,21 @@ final class PlayerViewModel: ObservableObject {
     }
 
     private func updateNowPlaying(episode: Episode) {
+        // Resolve the playlist name. The SwiftData back-relationship may not be
+        // faulted in yet on the episode object itself, so try the model context
+        // as a fallback to ensure we always get a value.
+        let playlistName: String? = episode.playlist?.name ?? {
+            guard let ctx = modelContext else { return nil }
+            let all = (try? ctx.fetch(FetchDescriptor<Playlist>())) ?? []
+            return all.first(where: { $0.episodes.contains(where: { $0.id == episode.id }) })?.name
+        }()
+
+        print("[PlayerViewModel] updateNowPlaying title='\(episode.title)' playlist='\(episode.playlist?.name ?? "nil")' resolved='\(playlistName ?? "nil")'")
+
         var info = [String: Any]()
         info[MPMediaItemPropertyTitle] = episode.title
-        if let playlistName = episode.playlist?.name {
+        if let playlistName {
+            info[MPMediaItemPropertyArtist] = playlistName
             info[MPMediaItemPropertyAlbumTitle] = playlistName
         }
         info[MPMediaItemPropertyMediaType] = MPMediaType.podcast.rawValue
