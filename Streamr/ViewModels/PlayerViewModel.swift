@@ -47,6 +47,48 @@ final class PlayerViewModel: ObservableObject {
         } catch {
             print("[PlayerViewModel] Audio session setup failed: \(error)")
         }
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAudioSessionInterruption(_:)),
+            name: AVAudioSession.interruptionNotification,
+            object: AVAudioSession.sharedInstance()
+        )
+    }
+
+    @objc private func handleAudioSessionInterruption(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+            let type = AVAudioSession.InterruptionType(rawValue: typeValue)
+        else { return }
+
+        switch type {
+        case .began:
+            // iOS has already paused playback; update our state to match.
+            if isPlaying {
+                isPlaying = false
+                updateNowPlayingPlaybackState()
+                print("[PlayerViewModel] Audio session interruption began — playback paused")
+            }
+
+        case .ended:
+            let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt ?? 0
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+            print("[PlayerViewModel] Audio session interruption ended — shouldResume=\(options.contains(.shouldResume))")
+
+            guard options.contains(.shouldResume) else { return }
+
+            // Re-activate the session before resuming (required after some interruptions).
+            try? AVAudioSession.sharedInstance().setActive(true)
+            player?.play()
+            if playbackRate != 1.0 { player?.rate = playbackRate }
+            isPlaying = true
+            updateNowPlayingPlaybackState()
+
+        @unknown default:
+            break
+        }
     }
 
     // MARK: - Playback control
